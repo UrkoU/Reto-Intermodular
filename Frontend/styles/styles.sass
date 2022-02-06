@@ -1,0 +1,298 @@
+@import "vars"
+@import "login"
+@import "consts"
+
+body
+	color: white 
+	background-color: var(--background-color) !important
+	overflow: hidden
+	
+.divImages
+	height: 5rem
+	width: 5rem
+	display: flex
+	justify-content: center
+	align-items: center
+
+#divPrincipal
+	background-color: var(--main-color)
+	padding: 0rem 6rem
+	border-radius: var(--border-radius-l)
+
+	#tituloPrincipal
+		text-align: center
+
+	#divContainer
+		overflow-y: auto
+
+#divCartaGrande
+	display: none
+	position: fixed
+	z-index: var(--front)
+	width: 50%
+	height: 50%
+	background-color: var(--background-color)
+	border-radius: 25px
+	padding: 4rem
+
+	#grContenido
+		flex: 2
+		color: white
+
+		#grTitulo
+			color: white
+
+	#grImagenes
+		flex:1
+		display: flex
+		flex-direction: column
+
+		.grImg
+			height: 10rem
+
+		#grFlecha
+			position: absolute
+
+
+#mapContainer
+	position: absolute
+	bottom:0
+	left: 0
+	padding: 5px
+	border-bottom: none
+	border-top-right-radius: var(--border-radius-s)
+	background-color: var(--secondary-color)
+	z-index: var(--low-front)
+
+	#mapTop
+		height: 1.5rem
+		width: 40rem
+		background-color: var(--secondary-color)
+		display: flex
+		justify-content: center
+		color: var(--text-black)
+		font-weight: bold
+		cursor: pointer
+		border-radius: var(--border-radius-s)
+
+	#map
+		position: relative 
+		height: 20rem
+		width: 40rem
+		// border-top-right-radius: 15px
+
+	#divError
+		position: absolute
+		bottom: 0
+		left: 0
+		display: flex
+		justify-content: center
+		align-items: center
+		height: 20rem
+		width: 40rem
+		border-top-right-radius: var(--border-radius-s)
+		height: 20rem
+		width: 40rem
+		z-index: 1000
+		background-color: #c94242
+		border: 5px dashed rgba(168, 50, 50, 1)
+		text-align: center
+		font-size: 2rem
+
+.imgDraggableList
+	width: 30rem
+	margin: auto
+	background-color: var(--background-color)
+	border-radius: var(--border-radius-m)
+
+.imgDraggable
+	height: 5rem
+
+.imgDraggable:hover
+	cursor: pointer
+
+.imgDraggableSmall
+	height: 4rem
+
+.infoTiempo
+	margin: 1rem 1%
+	padding: 2rem
+	width: 31%
+	border-radius: var(--border-radius-m)
+	background-color:  var(--background-color)
+	color: var(--text-color)
+
+.infoTiempo:hover
+	background-color: var(--background-color-2)
+
+.cardTitle
+	font-size: 1.2rem
+
+.cardImg
+	height: 3rem
+	width: 3rem
+
+.canAccept
+	background-color: var(--droppable)
+
+.cannotAccept
+	background-color: var(--not-droppable)
+
+// SETTINGS DIV
+
+#show
+	// background-color: red 
+
+.color-button-div 	
+	position: fixed
+	/* width: 60px
+	height: 60px
+	width: 4em
+	height: 4em
+	bottom: 1em
+	right: 1em
+	border-radius: 100px
+	background-color: var(--main-color)
+	box-shadow: 2px 2px 3px black
+
+.color-button-div-parent 
+	position: fixed
+	width: 4em
+	height: 4em
+	bottom: 1em
+	right: 1em
+
+.color-button 
+	background-color: var(--main-color)
+	width: 3.7em
+	height: 3.7em
+	border-radius: 100px
+	border: 3px solid var(--background-color-2)
+	text-align: center
+
+.settings
+	background: url(../images/settings-stopped.gif)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: 3.5em
+
+.color-button-small 
+	width: 3.5em
+	height: 3.5em
+	margin-top: 0.5em
+
+#colores
+	position: fixed
+	bottom: 5em
+	right: 1em
+	z-index: var(--low-front)
+	flex-direction: column
+	padding: 1em
+	background-color: var(--background-color-2)
+	border-radius: 25px
+
+#textUser
+	margin: 0.3em 0em 0.5em 1em
+
+.logout
+	margin: 0.3em 1em 0.5em
+	
+.logout:hover
+	cursor: pointer	
+
+.logoutButton
+	height: 2em
+	width: 2em
+	margin-left: 0.5em
+
+
+.color-button-list 
+	// bottom: 12em
+	// right: 1em
+	flex-direction: row
+	align-items: center
+	padding: 0em 1em
+	padding-bottom: 0.5em
+	background-color: var(--main-color)
+	border: 3px solid var(--background-color-2)
+	border-radius: 25px
+
+.color-button-list-2
+	// bottom: 5em
+	// right: 1em
+	flex-direction: row
+	align-items: center
+	padding: 0em 1em
+	padding-bottom: 0.5em
+	background-color: var(--secondary-color)
+	border: 3px solid var(--background-color-2)
+	border-radius: 25px
+
+.color-title
+	margin-top: 0.5em
+	margin-bottom: 0.5em
+	// transform: rotate(-90deg)
+
+.hidden
+	display: none
+
+.slider:hover
+	cursor: pointer
+
+.slider-handle:hover
+	cursor: pointer
+
+.slider-range:hover
+	cursor: pointer
+
+.slider
+	background: none !important
+	background-color: var(--secondary-color) !important
+	border: none !important
+	border-radius: 25px
+	height: 0.5em !important
+	margin: 0em 1em
+	margin-right: 2em
+	margin-bottom: 1em
+	// margin-bottom: 0.5em
+
+.slider-handle
+	height: 1.45em !important
+	width: 1.45em !important
+	background: none !important
+	background-color: var(--secondary-color) !important
+	border: none !important
+	border-radius: 25px
+	margin-top: -0.2em
+	
+
+.slider-range
+	margin-top: -0.7em
+	background-color: var(--secondary-color) !important
+	height: 2em !important
+	border-top-left-radius: 25px
+	border-bottom-left-radius: 25px
+
+/*#region Scrollbar*/
+::-webkit-scrollbar 
+	margin-right: 1%
+	width: 40px
+	background-color: var(--background-color)
+	border-radius: 25px
+
+
+/* Track */
+::-webkit-scrollbar-track
+	background: var(--main-color)
+	border-radius: 25px
+	border: 18px solid transparent
+	background-clip: content-box
+
+
+/* Handle */
+::-webkit-scrollbar-thumb 
+	background: var(--main-color)
+	border-radius: 25px
+	border: 8px solid transparent
+	background-clip: content-box
+/*#endregion */
