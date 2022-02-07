@@ -1,3 +1,7 @@
+/**
+ * Funciones del login, para iniciar sesión, cerrar, encriptar y desencriptar
+ */
+
 $("#btnLogin").on("click", IniciarSesion);
 let usuario = {};
 

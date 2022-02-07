@@ -1,3 +1,8 @@
+/**
+ * Funciones generales del proyecto
+ */
+
+// Devuelve el contenido del local storage
 function CargarLocalStorage() {
   sColorPrincipal = localStorage.getItem("sColorPrimario") || "green";
   sColorSecundario = localStorage.getItem("sColorSecundario") || "blue";
@@ -13,12 +18,14 @@ function CargarLocalStorage() {
   iMaxGuardados = localStorage.getItem("iMaxGuardados") || 5;
 }
 
+// Guarda los marcadores en bbdd escogidos por el usuario
 function GuardarMarcadores(marcadores) {
   marcadores.forEach((element) => {
     PutOpcionesUsuario(element.usuarioId, element);
   });
 }
 
+// Obtiene los marcadores de bbdd
 function ObtenerMarcadores() {
   var marcadores;
   var promesa = GetOpcionesUsuario(usuario.id);
@@ -27,14 +34,17 @@ function ObtenerMarcadores() {
   });
 }
 
+// Entre los guardados, devuelve el escogido
 function ObtenerGuardadoPorId(codigo) {
   return aGuardados.find((e) => e.codigoBaliza === codigo);
 }
 
+// Entre los guardados, devuelve el índice del escogido
 function ObtenerIndiceGuardado(codigo) {
   return aGuardados.findIndex((e) => e.codigoBaliza === codigo);
 }
 
+// Actualiza los datos
 function ActualizarDatos() {
   console.log("Actualizar datos");
   aGuardados.forEach((element) => {
@@ -46,28 +56,16 @@ function ActualizarDatos() {
   });
 }
 
+// Devuelve la fecha en el formato deseado
 Date.prototype.customFormat = function (formatString) {
   var YYYY, YY, MMMM, MMM, MM, M, DDDD, DDD, DD, D, hhhh, hhh, hh, h, mm, m, ss, s, ampm, AMPM, dMod, th;
   YY = ((YYYY = this.getFullYear()) + "").slice(-2);
   MM = (M = this.getMonth() + 1) < 10 ? "0" + M : M;
-  MMM = (MMMM = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ][M - 1]).substring(0, 3);
-  DD = (D = this.getDate()) < 10 ? "0" + D : D;
-  DDD = (DDDD = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][
-    this.getDay()
+  MMM = (MMMM = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][
+    M - 1
   ]).substring(0, 3);
+  DD = (D = this.getDate()) < 10 ? "0" + D : D;
+  DDD = (DDDD = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][this.getDay()]).substring(0, 3);
   th = D >= 10 && D <= 20 ? "th" : (dMod = D % 10) == 1 ? "st" : dMod == 2 ? "nd" : dMod == 3 ? "rd" : "th";
   formatString = formatString
     .replace("#YYYY#", YYYY)

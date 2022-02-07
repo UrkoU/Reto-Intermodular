@@ -1,3 +1,7 @@
+/**
+ * Funciones principales
+ */
+
 let aBalizas = [];
 let oTiempo = {};
 
@@ -13,6 +17,17 @@ let iconoDefecto;
 // Máximo de Marcadores guardados
 let iMaxGuardados = 5;
 
+$("document").ready(function () {
+  PreLogin();
+  if (bLogueado == true && usuario) {
+    console.log(usuario);
+    PostLogin();
+  } else {
+    MostrarLogin();
+  }
+});
+
+// Funciones antes del login
 function PreLogin() {
   CargarLocalStorage();
   CargarColorInicial();
@@ -20,6 +35,7 @@ function PreLogin() {
   CrearSlider();
 }
 
+// Funciones después del login
 function PostLogin() {
   var promesa2 = GetOpcionesUsuario(usuario.id);
   promesa2.then((res) => {
@@ -32,16 +48,7 @@ function PostLogin() {
   });
 }
 
-$("document").ready(function () {
-  PreLogin();
-  if (bLogueado == true && usuario) {
-    console.log(usuario);
-    PostLogin();
-  } else {
-    MostrarLogin();
-  }
-});
-
+// Obtener todas las balizas
 function ObtenerBalizas() {
   var promise = GetBalizas();
   promise.then(function (data) {
@@ -51,6 +58,7 @@ function ObtenerBalizas() {
   });
 }
 
+// Obtener la baliza deseada
 function ObtenerTiempo(id) {
   var promise = GetTiempo(id);
   promise.then(function (data) {
@@ -59,6 +67,7 @@ function ObtenerTiempo(id) {
   });
 }
 
+// Cambiar estado del mapa
 $("#mapTop").click(() => {
   $("#map").toggle();
 });
@@ -75,6 +84,7 @@ function OcultarLogin() {
   $("#divLogin").css("display", "none");
 }
 
+// Mostrar carta de información en grande
 function MostrarCartaGrande(oTiempo) {
   $("#divBlur").show();
   $("#divCartaGrande").css("display", "flex");
@@ -97,12 +107,13 @@ function MostrarCartaGrande(oTiempo) {
   console.log(oTiempo);
 }
 
-function OcultarCartaGrande(params) {
+function OcultarCartaGrande() {
   $("#divBlur").hide();
   $("#divCartaGrande").css("display", "none");
   console.log("OCULTAR CARTA GRANDE");
 }
 
+// Mostrar el error en el contenedor del mapa
 function MostrarError(error = limitError) {
   clearTimeout(tTimeout);
   $("#divError").text(error);
@@ -113,6 +124,7 @@ function MostrarError(error = limitError) {
   }, 2000);
 }
 
+// Carga todas las cartas
 function CargarCartas(balizas) {
   $(`#divContainer`).empty();
   // if (oGuardados[test].length >= 0)

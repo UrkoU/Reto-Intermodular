@@ -11,6 +11,7 @@ const iconoSeleccionado = L.icon({
 });
 
 function CargarMapa() {
+  // Carga el mapa de leaflet
   if (mapa) mapa.remove();
   mapa = L.map("map").setView([42.983333333333, -2.6166666666667], 8.4);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -20,6 +21,7 @@ function CargarMapa() {
 }
 
 function CargarMarcadores() {
+  // Carga los marcadores
   EliminarMarcadores();
   aMarcadores = new L.LayerGroup();
   aMarcadores.clearLayers();
@@ -90,6 +92,7 @@ function AnadirAMapa(clickedElement, oBaliza) {
 }
 
 function AnadirCarta(oTiempo) {
+  // Añade la carta seleccionada a la lista
   let oOpciones = ObtenerGuardadoPorId(oTiempo.codigo);
   $("#divContainer").append(
     `<div id="div${oTiempo.codigo}" class="infoTiempo mw-50 droppableItem">

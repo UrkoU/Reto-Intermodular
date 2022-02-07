@@ -1,7 +1,11 @@
-// const url = "http://10.10.17.164/api/"; // docker plaiaundi
-const url = "http://localhost/api/"; // docker home
+const url = "http://10.10.17.164/api/"; // docker plaiaundi
+// const url = "http://localhost/api/"; // docker home
 // const url = "https://localhost:5001/api/"; // local
 let sToken = "";
+
+/**
+ * Llamadas a la api. Tienen el mismo nombre que los métodos en TiempoApi
+ */
 
 function GetBalizas() {
   return $.ajax({
@@ -71,6 +75,8 @@ function DeleteOpcionUsuario(id, codigo) {
     console.log("ERROR: " + err);
   });
 }
+
+// Login == api/users/authenticate
 
 function LoginApi(user = "Deagle50", pass = "pass") {
   return $.ajax({
